@@ -27,7 +27,7 @@ def deal_with_consumer_data(msg):
 # python操作kafka
 class pyKafka:
     def __init__(self, hosts, topic_name):
-        self.client = KafkaClient(hosts=hosts)
+        self.client = KafkaClient(hosts=hosts, broker_version='0.10.0')
         # 选择一个topic,不存在则新建
         self.topic = self.client.topics[bytes(topic_name, encoding='utf-8')]
         self.producer = self.topic.get_sync_producer()  # 同步生产
